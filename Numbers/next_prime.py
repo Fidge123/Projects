@@ -1,13 +1,13 @@
 # **Next Prime Number** - Have the program find prime numbers until the user chooses to stop asking for the next one.
 
-import tkinter
+import tkinter as tk
 
-class Application(tkinter.Frame):
+class Application(tk.Frame):
     def __init__(self, parent=None):
-        tkinter.Frame.__init__(self,parent)
+        tk.Frame.__init__(self,parent)
         self.parent = parent
 
-        self.primes = [2]
+        self.primes = []
         self.current_number = 2
         self.is_prime = True
         self.found_prime = False
@@ -17,15 +17,15 @@ class Application(tkinter.Frame):
     def initialize(self):
         self.grid()
 
-        self.prime_label = tkinter.Label(self)
-        self.prime_label["text"] = self.current_number
-        self.prime_label.grid(column=0, row=0)
+        self.prime_label = tk.Label(self)
+        self.prime_label["text"] = "Click 'Next' to get prime!"
+        self.prime_label.grid(columnspan=4, row=0, padx=5, pady=5)
 
-        self.next_prime_button = tkinter.Button(self, text="Next", command=self.next_prime)
-        self.next_prime_button.grid(column=0, row=1)
+        self.next_prime_button = tk.Button(self, text="Next", command=self.next_prime)
+        self.next_prime_button.grid(column=0, row=1, padx=2, pady=2, sticky="W")
 
-        self.quit_button = tkinter.Button(self, text="QUIT!", command=root.destroy)
-        self.quit_button.grid(column=1, row=1)
+        self.quit_button = tk.Button(self, text="Quit", command=root.destroy)
+        self.quit_button.grid(column=1, row=1, padx=2, pady=2, sticky="W")
 
     def next_prime(self):
         while self.found_prime == False:
@@ -40,12 +40,13 @@ class Application(tkinter.Frame):
                 self.current_number += 1
                 self.is_prime = True
 
-        self.prime_label["text"] = self.current_number
+        self.prime_label["text"] = "Current Prime Number: " + str(self.current_number)
 
         self.found_prime = False
         self.current_number += 1
 
 if __name__ == "__main__":
-    root = tkinter.Tk()
+    root = tk.Tk()
+    root.title("Primes")
     app = Application(parent=root)
     app.mainloop()
