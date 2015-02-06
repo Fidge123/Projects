@@ -5,10 +5,10 @@ vowels = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
 
 for x in range(0, len(user_string)):
     if user_string[0] in vowels:
-        pig_string = user_string + "-way"
+        pig_string = user_string + "way"
         print(pig_string)
         break
     if user_string[x] in vowels:
-        pig_string = user_string[x::1] + "-" + user_string[0:x:] + "ay"
+        pig_string = user_string[x::1] + user_string[0:x:] + "ay"
         print(pig_string)
         break
